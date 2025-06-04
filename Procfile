@@ -1,1 +1,1 @@
-web: bin/boot
+web: nginx -c config/nginx.conf
