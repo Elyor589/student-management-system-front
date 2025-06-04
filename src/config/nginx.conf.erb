@@ -9,12 +9,13 @@ http {
   keepalive_timeout 65;
 
   server {
-    listen <%= ENV["PORT"] %>;
-    root <%= ENV["HOME"] %>/dist;
-    index index.html;
+      listen ${PORT};
+      root ${HOME}/dist;
+      index index.html;
 
-    location / {
-      try_files $uri $uri/ /index.html;
-    }
+      location / {
+        try_files $uri $uri/ /index.html;
+      }
   }
+
 }
