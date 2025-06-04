@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+echo "Rendering nginx config from nginx.conf.erb"
+erb config/nginx.conf.erb > config/nginx.conf
+
+echo "Starting nginx..."
+nginx -c $PWD/config/nginx.conf -g "daemon off;"
