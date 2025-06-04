@@ -1,4 +1,6 @@
 worker_processes 1;
+daemon off;  # Important for Heroku
+
 events { worker_connections 1024; }
 
 http {
@@ -8,12 +10,18 @@ http {
   keepalive_timeout  65;
 
   server {
-    listen <%= ENV["PORT"] %>;
-    root <%= ENV["HOME"] %>/dist;
+    listen $PORT;  # Changed from ERB to direct env variable
+    server_name _;
+    root /app/dist;  # Changed from HOME to /app
     index index.html;
 
     location / {
-      try_files $uri /index.html;
+      try_files $uri $uri/ /index.html;
+    }
+
+    error_page 404 /index.html;
+    location = /index.html {
+      internal;
     }
   }
 }
