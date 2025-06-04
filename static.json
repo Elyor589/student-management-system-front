@@ -1,5 +1,5 @@
 {
-  "root": "build/",
+  "root": "dist/",
   "https_only": true,
   "clean_urls": false,
   "routes": {
