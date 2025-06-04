@@ -1,0 +1,107 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.student-form-container {
+    width: 350px;
+    padding: 20px 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.student-form-container:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.student-form-container input[type="text"],
+.student-form-container input[type="email"],
+.student-form-container input[type="password"],
+.student-form-container input[type="date"],
+.student-form-container input[type="number"],
+.student-form-container select,
+.student-form-container input {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.student-form-container select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    padding-right: 10px;
+}
+
+.student-form-container input[type="text"]:focus,
+.student-form-container input[type="email"]:focus,
+.student-form-container input[type="password"]:focus,
+.student-form-container input[type="date"]:focus,
+.student-form-container input[type="number"]:focus,
+.student-form-container input:focus,
+.student-form-container select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.student-form-container button {
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.student-form-container button:hover {
+    background-color: #0056b3;
+}
+
+.student-form-container button:focus {
+    outline: none;
+}
+
+.student-form-container h2 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.error-text{
+    color: red;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 0 5px;
+    font-size: small;
+    text-align: left;
+}
+
+.student-form-container label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}

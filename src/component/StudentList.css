@@ -1,0 +1,57 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.student-list-container {
+    width: 1900px;
+    padding: 2rem;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(90, 86, 86, 0);
+}
+
+.student-list-container h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+}
+
+thead {
+    color: #333333;
+    text-align: left;
+}
+
+thead th {
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+tbody td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #333;
+}

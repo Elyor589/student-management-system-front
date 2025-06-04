@@ -1,0 +1,103 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.edit-student-container {
+    width: 400px;
+    padding: 25px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.edit-student-container:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.edit-student-container h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.edit-student-container .message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+}
+
+.edit-student-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-student-container label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.edit-student-container form input[type="text"],
+.edit-student-container form input[type="email"],
+.edit-student-container form input[type="number"],
+.edit-student-container form input[type="tel"],
+.edit-student-container form input[type="date"],
+.edit-student-container form input,
+.edit-student-container form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.edit-student-container form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    padding-right: 10px;
+    color: rgba(51, 51, 51, 0.79);
+}
+
+.edit-student-container input:focus,
+.edit-student-container select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.edit-student-container button {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-student-container button:hover {
+    background-color: #0056b3;
+}
+
+.edit-student-container button:focus {
+    outline: none;
+}
