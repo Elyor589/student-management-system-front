@@ -1,18 +1,18 @@
 worker_processes 1;
-daemon off;  # Important for Heroku
+daemon off;  # Critical for Heroku (must run in foreground)
 
 events { worker_connections 1024; }
 
 http {
   include       mime.types;
   default_type  application/octet-stream;
-  sendfile        on;
-  keepalive_timeout  65;
+  sendfile      on;
+  keepalive_timeout 65;
 
   server {
-    listen $PORT;  # Changed from ERB to direct env variable
+    listen $PORT default_server;
     server_name _;
-    root /app/dist;  # Changed from HOME to /app
+    root /app/dist;
     index index.html;
 
     location / {
