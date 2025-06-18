@@ -6,7 +6,7 @@ const StudentList = () => {
     const [students, setStudents] = React.useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8094/students/getAllStudents')
+        axios.get('http://localhost:8088/v1/students/getAllStudents')
             .then(res => setStudents(res.data))
             .catch(err => console.error("Error getting students: ", err));
     }, []);

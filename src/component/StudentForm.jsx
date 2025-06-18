@@ -53,7 +53,7 @@ export default function StudentForm() {
         if (!validate()) return;
 
         try {
-            const response = await fetch("http://localhost:8094/students/create-student", {
+            const response = await fetch('http://localhost:8088/v1/students/create-student', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(formDate)
@@ -119,6 +119,28 @@ export default function StudentForm() {
                         onChange={handleChange}
                     />
                     {errors.lastName && <p className="error-text">{errors.lastName}</p>}
+                </div>
+
+                <div>
+                    <label>Username</label>
+                    <input
+                    type="text"
+                    name="username"
+                    value={formDate.username}
+                    onChange={handleChange}
+                    />
+                        {errors.username && <p className="error-text">{errors.username}</p>}
+                </div>
+
+                <div>
+                    <label>Password</label>
+                    <input
+                    type="password"
+                    name="password"
+                    value={formDate.password}
+                    onChange={handleChange}
+                    />
+                    {errors.password && <p className="error-text">{errors.password}</p>}
                 </div>
 
                 <div>

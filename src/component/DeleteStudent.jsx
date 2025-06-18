@@ -14,7 +14,7 @@ const DeleteStudent = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:8094/students/delete-student/${studentId}`, {
+            const response = await fetch(`http://localhost:8088/students/delete-student/${studentId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             });

@@ -22,7 +22,7 @@ const EditStudent = () => {
         const timer = setTimeout(() => {
             const fetchStudent = async () => {
                 try {
-                    const response = await fetch(`http://localhost:8094/students/getStudent/${studentId}`, {
+                    const response = await fetch(`http://localhost:8088/v1/students/getStudent/${studentId}`, {
                         method: "GET",
                         headers: { "Content-Type": "application/json" },
                     });
@@ -69,7 +69,7 @@ const EditStudent = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:8094/students/update-student/${studentId}`, {
+            const response = await fetch(`http://localhost:8088/v1/students/update-student/${studentId}`, {
                 method: "PUT",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(formDate),
