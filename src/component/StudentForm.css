@@ -4,7 +4,8 @@ html, body {
 }
 
 .student-form-container {
-    width: 350px;
+    width: 700px;
+    height: 550px;
     padding: 20px 25px;
     background: #ffffff;
     border-radius: 10px;
@@ -32,11 +33,11 @@ html, body {
 .student-form-container input {
     width: 100%;
     padding: 10px 15px;
-    margin-bottom: 5px;
     border: 1px solid #ddd;
+    margin-bottom: 5px;
     border-radius: 6px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     transition: border-color 0.3s ease;
 }
@@ -63,8 +64,7 @@ html, body {
 .student-form-container button {
     width: 100%;
     padding: 12px 0;
-    margin-top: 10px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     font-weight: bold;
     border: none;
@@ -75,7 +75,7 @@ html, body {
 }
 
 .student-form-container button:hover {
-    background-color: #0056b3;
+    background-color: #333333;
 }
 
 .student-form-container button:focus {
@@ -83,9 +83,9 @@ html, body {
 }
 
 .student-form-container h2 {
-    font-weight: 700;
+    font-weight: 900;
     margin-bottom: 15px;
-    font-size: 22px;
+    font-size: 2.5rem;
     text-align: center;
 }
 
@@ -99,9 +99,43 @@ html, body {
 }
 
 .student-form-container label {
-    font-weight: 500;
+    font-weight: 400;
     display: block;
     margin-bottom: 5px;
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+}
+
+.submit-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    z-index: 100;
+}
+
+.submit-button button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button button:hover {
+    background-color: #0056b3;
 }

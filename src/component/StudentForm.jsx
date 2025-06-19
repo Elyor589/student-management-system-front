@@ -98,112 +98,119 @@ export default function StudentForm() {
                     {message}
                 </div>
             )}
-            <form className="student-form" onSubmit={handleSubmit}>
-                <div>
-                    <label>First Name</label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        value={formDate.firstName}
-                        onChange={handleChange}
-                    />
-                    {errors.firstName && <p className="error-text">{errors.firstName}</p>}
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <div className="form-group-left">
+                        <div>
+                            <label>First Name*</label>
+                            <input
+                                type="text"
+                                name="firstName"
+                                placeholder="First Name"
+                                value={formDate.firstName}
+                                onChange={handleChange}
+                            />
+                            {errors.firstName && <p className="error-text">{errors.firstName}</p>}
+                        </div>
+                        <div>
+                            <label>Last Name*</label>
+                            <input
+                                type="text"
+                                name="lastName"
+                                placeholder="Last Name"
+                                value={formDate.lastName}
+                                onChange={handleChange}
+                            />
+                            {errors.lastName && <p className="error-text">{errors.lastName}</p>}
+                        </div>
+                        <div>
+                            <label>Username*</label>
+                            <input
+                                type="text"
+                                name="username"
+                                placeholder="Username"
+                                value={formDate.username}
+                                onChange={handleChange}
+                            />
+                            {errors.username && <p className="error-text">{errors.username}</p>}
+                        </div>
+
+                        <div>
+                            <label>Password*</label>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={formDate.password}
+                                onChange={handleChange}
+                            />
+                            {errors.password && <p className="error-text">{errors.password}</p>}
+                        </div>
+                    </div>
+                    <div className="form-group-right">
+                        <div>
+                            <label>Email*</label>
+                            <input
+                                type="text"
+                                name="email"
+                                placeholder="Email"
+                                value={formDate.email}
+                                onChange={handleChange}
+                            />
+                            {errors.email && <p className="error-text">{errors.email}</p>}
+                        </div>
+                        <div>
+                            <label>Date of Birth*</label>
+                            <input
+                                type="text"
+                                name="dateOfBirth"
+                                placeholder="Date of Birth"
+                                value={formDate.dateOfBirth}
+                                onChange={handleChange}
+                            />
+                            {errors.dateOfBirth && <p className="error-text">{errors.dateOfBirth}</p>}
+                        </div>
+                        <div>
+                            <label>Age*</label>
+                            <input
+                                type="text"
+                                name="age"
+                                placeholder="Age"
+                                value={formDate.age}
+                                onChange={handleChange}
+                            />
+                            {errors.age && <p className="error-text">{errors.age}</p>}
+                        </div>
+                        <div>
+                            <label>Gender*</label>
+                            <select
+                                name="gender"
+                                value={formDate.gender}
+                                onChange={handleChange}
+                                required
+                                style={{ color: formDate.gender ? 'black' : 'rgba(153,153,153,0.79)' }}
+                            >
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Phone Number*</label>
+                            <input
+                                type="text"
+                                name="phoneNumber"
+                                placeholder="Phone Number"
+                                value={formDate.phoneNumber}
+                                onChange={handleChange}
+                            />
+                            {errors.phoneNumber && <p className="error-text">{errors.phoneNumber}</p>}
+                        </div>
+                    </div>
+                    <div className="submit-button">
+                        <button type="submit">Create student</button>
+                    </div>
                 </div>
-
-                <div>
-                    <label>Last Name</label>
-                    <input
-                        type="text"
-                        name="lastName"
-                        value={formDate.lastName}
-                        onChange={handleChange}
-                    />
-                    {errors.lastName && <p className="error-text">{errors.lastName}</p>}
-                </div>
-
-                <div>
-                    <label>Username</label>
-                    <input
-                    type="text"
-                    name="username"
-                    value={formDate.username}
-                    onChange={handleChange}
-                    />
-                        {errors.username && <p className="error-text">{errors.username}</p>}
-                </div>
-
-                <div>
-                    <label>Password</label>
-                    <input
-                    type="password"
-                    name="password"
-                    value={formDate.password}
-                    onChange={handleChange}
-                    />
-                    {errors.password && <p className="error-text">{errors.password}</p>}
-                </div>
-
-                <div>
-                    <label>Email</label>
-                    <input
-                        type="text"
-                        name="email"
-                        value={formDate.email}
-                        onChange={handleChange}
-                    />
-                    {errors.email && <p className="error-text">{errors.email}</p>}
-                </div>
-
-                <div>
-                    <label>Date of Birth</label>
-                    <input
-                        type="text"
-                        name="dateOfBirth"
-                        value={formDate.dateOfBirth}
-                        onChange={handleChange}
-                    />
-                    {errors.dateOfBirth && <p className="error-text">{errors.dateOfBirth}</p>}
-                </div>
-
-                <div>
-                    <label>Age</label>
-                    <input
-                        type="text"
-                        name="age"
-                        value={formDate.age}
-                        onChange={handleChange}
-                    />
-                    {errors.age && <p className="error-text">{errors.age}</p>}
-                </div>
-
-                <div>
-                    <label>Gender</label>
-                    <select
-                        name="gender"
-                        value={formDate.gender}
-                        onChange={handleChange}
-                        required
-                        style={{ color: formDate.gender ? 'black' : 'rgba(153,153,153,0.79)' }}
-                    >
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-
-
-                <div>
-                    <label>Phone Number</label>
-                    <input
-                        type="text"
-                        name="phoneNumber"
-                        value={formDate.phoneNumber}
-                        onChange={handleChange}
-                    />
-                    {errors.phoneNumber && <p className="error-text">{errors.phoneNumber}</p>}
-                </div>
-
-                <button type="submit">Create student</button>
             </form>
         </div>
     );

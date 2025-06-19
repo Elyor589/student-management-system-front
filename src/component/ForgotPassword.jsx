@@ -4,6 +4,7 @@ import StudentForm from "./StudentForm.jsx";
 import './ForgotPassword.css'
 import {FaCheckCircle} from 'react-icons/fa'
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 function ForgotPassword() {
     const [phone, setPhone] = useState("");
@@ -28,6 +29,7 @@ function ForgotPassword() {
                 }
             });
 
+            toast.success("Verification code sent")
             setStatus("Verification code sent");
             setStep("reset");
         } catch (error) {
@@ -71,7 +73,8 @@ function ForgotPassword() {
         <div className="reset-password-container">
             <h2>Reset Password</h2>
             {step === "send" && (
-                <form onSubmit={onSubmit} autoComplete="off">
+                <form className="reset-phone" onSubmit={onSubmit} autoComplete="off">
+                    <label>Phone number*</label>
                     <input
                         type="text"
                         placeholder="Enter phone number"
@@ -91,13 +94,6 @@ function ForgotPassword() {
 
             {step === "reset" && (
                 <form onSubmit={resetPassword} autoComplete="off">
-                    {status && (
-                        <p style={{ color: "green", fontSize: "0.9rem", marginBottom: "5px", fontWeight: "700" }}>
-                            <FaCheckCircle style={{ marginRight: "5px", verticalAlign: "middle" }} />
-                            {status}
-                        </p>
-                    )}
-
                     <input
                         type="text"
                         placeholder="Verification code"

@@ -25,6 +25,7 @@ const StudentList = () => {
                     <th>Age</th>
                     <th>Gender</th>
                     <th>Phone</th>
+                    <th>Enrollments</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@ const StudentList = () => {
                         <td>{student.age}</td>
                         <td>{student.gender}</td>
                         <td>{student.phoneNumber}</td>
+                        <td>{student.enrollments}</td>
                     </tr>
                 ))}
                 </tbody>

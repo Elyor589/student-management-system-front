@@ -1,6 +1,6 @@
 .login-container {
-    width: 350px;
-    padding: 25px 30px;
+    width: 400px;
+    padding: 30px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -19,7 +19,8 @@
 .login-container h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 900;
     color: #333;
 }
 
@@ -30,11 +31,11 @@
 .login-container input[type="text"],
 .login-container input[type="password"] {
     width: 100%;
-    padding: 10px 12px;
+    padding: 15px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     transition: border-color 0.3s ease;
 }
@@ -47,7 +48,7 @@
 .login-container button {
     width: 100%;
     padding: 0.75rem;
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 8px;
@@ -57,5 +58,36 @@
 }
 
 .login-container button:hover {
-    background-color: #0056b3;
+    background-color: #333333;
+}
+
+.username label {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: flex-end;
+}
+
+.password label {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: flex-end;
+}
+
+.login-container input.input-error {
+    border: 1px solid #e63946;
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
 }

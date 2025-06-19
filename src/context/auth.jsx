@@ -27,10 +27,10 @@ const AuthProvider = ({ children }) => {
                 isAuthenticated: true,
                 user: res.data.user,
             });
-            return {success: true, data: res.data};
+            return { success: true, data: res.data };
         } catch (error) {
-            console.log(error);
-            return false;
+            console.log("Login failed:", error);
+            return { success: false };
         }
     };
 

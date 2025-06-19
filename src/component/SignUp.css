@@ -1,5 +1,5 @@
 .signup-container {
-    width: 400px;
+    width: 500px;
     padding: 30px 35px;
     background-color: #fff;
     border-radius: 10px;
@@ -19,7 +19,8 @@
 .signup-container h2 {
     text-align: center;
     margin-bottom: 1rem;
-    font-size: 1.6rem;
+    font-size: 2.5rem;
+    font-weight: 900;
     color: #333;
 }
 
@@ -38,10 +39,10 @@
 .signup-container input[type="email"],
 .signup-container input[type="password"] {
     width: 100%;
-    padding: 10px 12px;
+    padding: 15px 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     transition: border-color 0.3s ease;
 }
@@ -78,36 +79,73 @@
     background-color: #333;
 }
 
-.signup-container button.google-signup {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-radius: 8px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    outline: none;
-}
-
-.signup-container button.google-signup:hover {
-    background-color: #f3f3f3;
-}
-
 .signup-container .login-link {
     text-align: center;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     color: #333333;
     margin-top: 15px;
+}
+
+.login-link .link:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
 
 .signup-container .login-link a {
     color: #007bff;
     text-decoration: none;
+}
+
+.username label {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: flex-end;
+}
+
+.password label {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: flex-end;
+}
+
+.phoneNumber label {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: flex-end;
+}
+
+.email label {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: flex-end;
+}
+
+.signup-container input.input-valid {
+    border: 1px solid #28a745;
+}
+
+.signup-container input.input-invalid {
+    border: 1px solid #dc3545;
+}
+
+.signup-container input.input-default {
+    border: 1px solid #ccc;
+}
+
+.availability-message {
+    margin-top: 5px;
+    text-align: left;
 }

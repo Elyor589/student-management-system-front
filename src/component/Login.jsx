@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import './Dashboard.jsx'
 import {AuthContext} from "../context/auth.jsx";
 import './Login.css'
+import {toast} from "react-toastify";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Login = () => {
         password: "",
     });
 
+    const [touchedFields, setTouchedFields] = useState({})
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -17,8 +19,10 @@ const Login = () => {
     const  {username, password} = formData;
 
     const onChange = e => {
+        const { name, value } = e.target;
         setFormData({ ...formData, [e.target.name]: e.target.value });
         setErrors("");
+        setTouchedFields(prev => ({...prev, [name]: true }));
     }
 
     const { login } = useContext(AuthContext);
@@ -28,11 +32,23 @@ const Login = () => {
         setLoading(true);
         setErrors("");
 
+        const newErrors = {};
+        if (!username.trim()) newErrors.username = true;
+        if (!password.trim()) newErrors.password = true;
+
+        if (Object.keys(newErrors).length > 0) {
+            setTouchedFields(newErrors);
+            setLoading(false);
+            return;
+        }
+
         const result = await login(username, password);
-        if (result.success) {
-            navigate("/dashboard");
+        if (result?.success) {
+            toast.success("Login successful");
+            setTimeout(() => navigate("/dashboard"), 1500);
         } else {
-            setErrors("Incorrect username or password");
+            toast.error(result?.message || "Incorrect username or password");
+            setErrors("");
             setLoading(false);
         }
     };
@@ -41,30 +57,33 @@ const Login = () => {
         <div className="login-container">
             <h2>Login</h2>
             <form onSubmit={onSubmit}>
-                <div>
+                <div className="username">
+                    <label>Username*</label>
                     <input
                         type="text"
-                        placeholder="username"
+                        placeholder="Username"
                         name="username"
                         value={formData.username}
                         onChange={onChange}
-                        required
+                        className={touchedFields.username && !formData.username.trim() ? "input-error" : ""}
                     />
                 </div>
-                <div>
+                <div className="password">
+                    <label>Password*</label>
                     <input
                         type="password"
-                        placeholder="password"
+                        placeholder="Password"
                         name="password"
                         value={formData.password}
                         onChange={onChange}
-                        required
+                        className={touchedFields.password && !formData.password.trim() ? "input-error" : ""}
                     />
                 </div>
                 <button type="submit">Login</button>
                 <a href="/forgot-password" className="forgot-password-link">
                     Forgot Password
                 </a>
+                <a href="/signup" className="register-link">Register</a>
             </form>
         </div>
     )

@@ -13,11 +13,13 @@ import DeleteStudent from "./component/DeleteStudent.jsx";
 import Login from "./component/Login.jsx";
 import {AuthProvider, AuthContext} from "./context/auth.jsx";
 import axios from "axios";
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Dashboard from "./component/Dashboard.jsx";
 import ErrorBoundary from "./component/ErrorBoundry.jsx";
 import ForgotPassword from "./component/ForgotPassword.jsx";
 import SignUp from "./component/SignUp.jsx";
+import {ToastContainer} from "react-toastify";
+import Course from "./component/Course.jsx";
 
 const PrivateRoute = ({ children }) => {
     const { authState } = useContext(AuthContext);
@@ -60,12 +62,20 @@ function AppRoutes() {
                         <DeleteStudent />
                     </PrivateRoute>
                 } />
+
+                <Route path="/courses" element={
+                    <PrivateRoute>
+                        <Course />
+                    </PrivateRoute>
+                } />
             </Routes>
         </div>
     );
 }
 
+
 function AppContent() {
+    const [showDropdown, setShowDropdown] = useState(false);
     const { authState, logout } = useContext(AuthContext)
 
     return (
@@ -73,17 +83,27 @@ function AppContent() {
             <div className="app-container">
                 <header>
                     <nav>
+                        <ToastContainer position="top-center" autoClose={2000} />
                         <NavLinkWithFade to="/" className="nav-button">Home</NavLinkWithFade>
 
                         {authState?.isAuthenticated ? (
-                            <>
-                                <NavLinkWithFade to="/dashboard" className="nav-button">Dashboard</NavLinkWithFade>
-                                <NavLinkWithFade to="/create" className="nav-button">Create</NavLinkWithFade>
-                                <NavLinkWithFade to="/list" className="nav-button">View All</NavLinkWithFade>
-                                <NavLinkWithFade to="/edit" className="nav-button">Edit</NavLinkWithFade>
-                                <NavLinkWithFade to="/delete" className="nav-button">Delete</NavLinkWithFade>
-                                <button onClick={logout}>Logout</button>
-                            </>
+                            <div className="dropdown">
+                                <button className="dropdown-toggle" onClick={() => setShowDropdown(prev => !prev)}>
+                                    Students
+                                </button>
+                                {showDropdown && (
+                                    <div className="dropdown-menu">
+                                        <NavLinkWithFade to="/dashboard" className="dropdown-item">Dashboard</NavLinkWithFade>
+                                        <NavLinkWithFade to="/create" className="dropdown-item">Create</NavLinkWithFade>
+                                        <NavLinkWithFade to="/list" className="dropdown-item">View All</NavLinkWithFade>
+                                        <NavLinkWithFade to="/edit" className="dropdown-item">Edit</NavLinkWithFade>
+                                        <NavLinkWithFade to="/delete" className="dropdown-item">Delete</NavLinkWithFade>
+                                        <button onClick={logout}>Logout</button>
+                                    </div>
+                                )}
+
+                                <NavLinkWithFade to="/courses" className="dropdown-item">Courses</NavLinkWithFade>
+                            </div>
                         ) : (
                             <>
                                 <NavLinkWithFade to="/login" className="nav-button">Login</NavLinkWithFade>
