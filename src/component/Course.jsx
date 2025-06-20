@@ -1,62 +1,61 @@
 import React, {useEffect, useState} from "react";
-import {fetchCourses} from "../api/CourseApi.jsx";
-
-const CoursePage = ({ courses }) => {
-    return (
-        <div>
-            <h2>All Courses</h2>
-            {Array.isArray(courses) && courses.length > 0 ? (
-                <ul>
-                    {courses.map(course => (
-                        <li key={course.courseId}>
-                            <strong>{course.courseTitle}</strong>
-                            <ul>
-                                {course.tutorCourses.map(tutor => (
-                                    <li key={tutor.tutorCourseId}>
-                                        Taught by {tutor.tutorName} (Semester {tutor.semester}, Year {tutor.year})
-                                    </li>
-                                ))}
-                            </ul>
-                            <p>Enrollments: {course.enrollments.length}</p>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No courses found.</p>
-            )}
-        </div>
-    );
-}
+import axios from "axios";
 
 const Course = () => {
-    const [courses, setCourses] = useState([]);
+    const [course, setCourse] = React.useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
-    useEffect(() => {
-        fetchCourses()
-            .then(res =>  {
-                console.log("Fetching Courses: ", res.data);
-                setCourses(res.data);
-            })
-            .catch(err => {
-                console.error(err);
-                setCourses([]);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+    useEffect(() => {
+        axios.get("http://localhost:8088/v1/course/getAllCourses")
+            .then(res => {
+                if (Array.isArray(res.data)) {
+                    setCourse(res.data);
+                } else if (typeof res.data === "string") {
+                    const fixed = res.data.split("][")[0] + "]";
+                    setCourse(JSON.parse(fixed));
+                }
+            })
+            .catch(err => console.log("Error fetching Course", err))
+            .finally(() => setLoading(false));
+    }, [])
+
+    if (loading) return <p>Loading courses...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div className="courses-page">
+        <div>
             <h2>All Courses</h2>
-            <CoursePage courses={courses} />
+            <table>
+                <thead>
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Title</th>
+                    <th>Tutor</th>
+                    <th>Enrollment Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                {course.map(c => (
+                    <tr key={c.courseId}>
+                        <td>{c.courseId}</td>
+                        <td>{c.courseTitle}</td>
+                        <td>
+                            {c.tutorCourses.map(tutor => (
+                                <div key={tutor.tutorCourseId}>
+                                    {tutor.tutorName}
+                                </div>
+                            ))}
+                        </td>
+                        <td>{c.enrollments.length}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
         </div>
-    )
-}
+    );
+
+};
 
 export default Course;

@@ -84,6 +84,23 @@
     animation: shake 0.3s ease-in-out;
 }
 
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-4px); }

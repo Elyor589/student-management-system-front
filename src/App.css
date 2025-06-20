@@ -173,6 +173,7 @@ main{
 .dropdown {
     position: relative;
     display: inline-block;
+    outline: none;
 }
 
 .dropdown-toggle {
@@ -182,6 +183,7 @@ main{
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
+    outline: none;
 }
 
 .dropdown-menu {

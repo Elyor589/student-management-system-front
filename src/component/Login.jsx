@@ -28,27 +28,33 @@ const Login = () => {
     const { login } = useContext(AuthContext);
 
     const onSubmit = async e => {
-        e.preventDefault();
-        setLoading(true);
-        setErrors("");
-
-        const newErrors = {};
-        if (!username.trim()) newErrors.username = true;
-        if (!password.trim()) newErrors.password = true;
-
-        if (Object.keys(newErrors).length > 0) {
-            setTouchedFields(newErrors);
-            setLoading(false);
-            return;
-        }
-
-        const result = await login(username, password);
-        if (result?.success) {
-            toast.success("Login successful");
-            setTimeout(() => navigate("/dashboard"), 1500);
-        } else {
-            toast.error(result?.message || "Incorrect username or password");
+        try {
+            e.preventDefault();
+            setLoading(true);
             setErrors("");
+
+            const newErrors = {};
+            if (!username.trim()) newErrors.username = true;
+            if (!password.trim()) newErrors.password = true;
+
+            if (Object.keys(newErrors).length > 0) {
+                setTouchedFields(newErrors);
+                setLoading(false);
+                return;
+            }
+
+            const result = await login(username, password);
+            if (result?.success) {
+                toast.success("Login successful");
+                setTimeout(() => navigate("/dashboard"), 1500);
+            } else {
+                toast.error(result?.message || "Incorrect username or password");
+                setErrors("");
+                setLoading(false);
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
             setLoading(false);
         }
     };
@@ -79,7 +85,9 @@ const Login = () => {
                         className={touchedFields.password && !formData.password.trim() ? "input-error" : ""}
                     />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? <span className="spinner"></span> : "Login"}
+                </button>
                 <a href="/forgot-password" className="forgot-password-link">
                     Forgot Password
                 </a>

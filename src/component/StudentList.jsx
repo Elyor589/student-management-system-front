@@ -7,7 +7,14 @@ const StudentList = () => {
 
     useEffect(() => {
         axios.get('http://localhost:8088/v1/students/getAllStudents')
-            .then(res => setStudents(res.data))
+            .then(res => {
+                if (Array.isArray(res.data)) {
+                    setStudents(res.data);
+                } else if (typeof res.data === "string") {
+                    const fixed = res.data.split("][")[0] + "]";
+                    setStudents(JSON.parse(fixed));
+                }
+            })
             .catch(err => console.error("Error getting students: ", err));
     }, []);
 

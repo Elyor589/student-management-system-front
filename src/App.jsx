@@ -20,6 +20,8 @@ import ForgotPassword from "./component/ForgotPassword.jsx";
 import SignUp from "./component/SignUp.jsx";
 import {ToastContainer} from "react-toastify";
 import Course from "./component/Course.jsx";
+import Tutor from "./component/Tutor.jsx";
+import AssignmentStats from "./component/AssignmentStats.jsx";
 
 const PrivateRoute = ({ children }) => {
     const { authState } = useContext(AuthContext);
@@ -68,6 +70,19 @@ function AppRoutes() {
                         <Course />
                     </PrivateRoute>
                 } />
+
+                <Route path="/tutor" element={
+                    <PrivateRoute>
+                        <Tutor />
+                    </PrivateRoute>
+                } />
+
+                <Route path="/assignmentStats" element={
+                    <PrivateRoute>
+                        <AssignmentStats />
+                    </PrivateRoute>
+                } />
+
             </Routes>
         </div>
     );
@@ -101,8 +116,9 @@ function AppContent() {
                                         <button onClick={logout}>Logout</button>
                                     </div>
                                 )}
-
-                                <NavLinkWithFade to="/courses" className="dropdown-item">Courses</NavLinkWithFade>
+                                <NavLinkWithFade to="/courses">Courses</NavLinkWithFade>
+                                <NavLinkWithFade to="/tutor">Tutor</NavLinkWithFade>
+                                <NavLinkWithFade to="/assignmentStats">Assignments</NavLinkWithFade>
                             </div>
                         ) : (
                             <>
